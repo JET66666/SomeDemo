@@ -1,0 +1,18 @@
+<input type="text" name="username" id="username">
+<input type="button" value="提交" id="btn">
+<script>
+	var btn = document.getElementById("btn");
+	var username = document.getElementById("username");
+	btn.onclick = function(){
+		var xhr = new XMLHttpRequest();
+		xhr.open("post","/checkname");
+		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		xhr.send("username=" + username.value);
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4 && xhr.status == 200){
+				var res = xhr.responseText;
+				console.log(res);
+			}
+		}
+	}
+</script>
